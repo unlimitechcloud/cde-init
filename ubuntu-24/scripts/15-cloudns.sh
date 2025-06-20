@@ -99,6 +99,8 @@ elif sudo service cron status >/dev/null 2>&1; then
     sudo service cron reload
 fi
 
+$UPDATER
+
 echo ""
 echo "✅ Instalación/actualización completa:"
 echo "- Script principal: $UPDATER"
