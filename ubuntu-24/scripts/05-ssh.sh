@@ -1,6 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "# Inciando CLI con el usuario $OWNER_USER"
 sudo su - "$OWNER_USER"
 
 SSH_DIR="$HOME/.ssh"
