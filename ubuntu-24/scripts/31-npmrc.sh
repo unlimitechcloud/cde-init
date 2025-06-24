@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+source ~/.bashrc
 
 NPMRC_FILE="$HOME/.npmrc"
 TOKEN="${NPM_REGISTRY_TOKEN_UCLOUD:-}"

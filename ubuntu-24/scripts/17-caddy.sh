@@ -39,7 +39,7 @@ mkdir -p "$CADDY_SERVICE_DIR"
 # Si no existe el archivo de config, crea uno básico
 if [ ! -f "$CADDYFILE_SRC" ]; then
   cat > "$CADDYFILE_SRC" <<EOF
-{$CLOUDNS_DOMAIN} {
+{\$CLOUDNS_DOMAIN} {
     respond "Hello World!"
 }
 EOF

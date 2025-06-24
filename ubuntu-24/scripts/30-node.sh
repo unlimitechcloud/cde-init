@@ -1,5 +1,6 @@
 #!/bin/bash
 set -euo pipefail
+source ~/.bashrc
 
 for dep in curl jq fnm; do
   if ! command -v "$dep" >/dev/null 2>&1; then
