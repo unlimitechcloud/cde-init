@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "# Ejecutando con el usuario $OWNER_USER"
-sudo -u "$OWNER_USER" bash <<'EOSU'
-
 # Detecta el usuario real incluso si se usa sudo
 if [ "$EUID" -eq 0 ]; then
   USER_HOME="/home/${SUDO_USER:-$USER}"
@@ -87,5 +84,3 @@ echo "👉 Edita tu configuración en: $CADDYFILE_SRC"
 echo "🔄 Recarga Caddy con: sudo systemctl reload caddy"
 echo "🌍 Verifica con: curl localhost (o tu dominio configurado)"
 echo "ℹ️  Si usas variables de entorno como {\$MY_VAR}, ponlas en /etc/environment y reinicia Caddy."
-
-EOSU

@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "# Ejecutando con el usuario $OWNER_USER"
-sudo -u "$OWNER_USER" bash <<'EOSU'
-
 SSH_DIR="$HOME/.ssh"
 KEY_FILE="$SSH_DIR/id_rsa"
 
@@ -44,6 +41,3 @@ fi
 
 echo "🔐 Tu clave pública es:"
 cat "${KEY_FILE}.pub"
-
-EOSU
-

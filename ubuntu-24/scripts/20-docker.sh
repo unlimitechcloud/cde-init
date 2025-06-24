@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "# Ejecutando con el usuario $OWNER_USER"
-sudo -u "$OWNER_USER" bash <<'EOSU'
-
 # 1. Detectar usuario interactivo (no root)
 if [ "$EUID" -eq 0 ]; then
     # SUDO_USER solo existe si ejecutas con sudo, sino será root
@@ -65,5 +62,3 @@ echo "   O ejecuta: 'newgrp docker' para una shell temporal con el grupo activo.
 echo "2. Para verificar, corre: 'id $USER_TO_ADD' y revisa que aparezca 'docker'."
 echo "3. Prueba: 'docker ps'"
 echo "-------------------------------------------------------------"
-
-EOSU

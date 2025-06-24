@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "# Ejecutando con el usuario $OWNER_USER"
+sudo -u "$OWNER_USER" bash <<'EOSU'
+
 # Carpeta de scripts relativa a la ubicación de este script
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 SCRIPTS_FOLDER="$SCRIPT_DIR/scripts"
@@ -30,3 +33,5 @@ done
 
 echo ""
 echo "✅ Todos los scripts ejecutados correctamente."
+
+EOSU

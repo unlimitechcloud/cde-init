@@ -1,9 +1,6 @@
 #!/bin/bash
 set -euo pipefail
 
-echo "# Ejecutando con el usuario $OWNER_USER"
-sudo -u "$OWNER_USER" bash <<'EOSU'
-
 # fnm
 FNM_PATH="/home/coder/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
@@ -68,5 +65,3 @@ fnm list
 echo ""
 echo "La versión predeterminada actual es:"
 fnm current
-
-EOSU
