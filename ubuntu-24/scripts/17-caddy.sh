@@ -10,7 +10,7 @@ else
   REAL_USER="$USER"
 fi
 
-CADDY_SERVICE_DIR="$USER_HOME/services"
+CADDY_SERVICE_DIR="$USER_HOME/.caddy"
 CADDYFILE_SRC="$CADDY_SERVICE_DIR/Caddyfile"
 CADDYFILE_DEST="/etc/caddy/Caddyfile"
 
@@ -34,7 +34,7 @@ else
 fi
 
 # Crea ~/services si no existe
-mkdir -p "$CADDY_SERVICE_DIR"
+mkdir -p "$CADDY_SERVICE_DIR/config"
 
 # Si no existe el archivo de config, crea uno básico
 if [ ! -f "$CADDYFILE_SRC" ]; then
