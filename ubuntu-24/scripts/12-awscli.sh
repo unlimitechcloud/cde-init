@@ -2,7 +2,9 @@
 set -euo pipefail
 
 echo "📂 Cambiando al directorio temporal /tmp..."
-cd /tmp
+sudo rm /tmp/awscli || true
+mkdir -p /tmp/awscli
+cd /tmp/awscli
 
 # Verificar si unzip está instalado
 if ! command -v unzip >/dev/null 2>&1; then
