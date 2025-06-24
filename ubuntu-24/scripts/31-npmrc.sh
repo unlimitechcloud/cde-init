@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "# Ejecutando con el usuario $OWNER_USER"
+sudo -u "$OWNER_USER" bash <<'EOSU'
+
 NPMRC_FILE="$HOME/.npmrc"
 TOKEN="${NPM_REGISTRY_TOKEN_UCLOUD:-}"
 
@@ -34,3 +37,5 @@ add_or_update_config "@unlimitechcloud:registry" "https://npm.unlimitech.cloud"
 add_or_update_config "//npm.unlimitech.cloud/:_authToken" "$TOKEN"
 
 echo "✅ Configuración de $NPMRC_FILE completada."
+
+EOSU

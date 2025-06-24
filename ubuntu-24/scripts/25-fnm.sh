@@ -1,6 +1,9 @@
 #!/bin/bash
 set -euo pipefail
 
+echo "# Ejecutando con el usuario $OWNER_USER"
+sudo -u "$OWNER_USER" bash <<'EOSU'
+
 # 1. Detectar y agregar dependencias necesarias
 NEEDED_PKGS=()
 command -v curl >/dev/null 2>&1 || NEEDED_PKGS+=("curl")
@@ -49,3 +52,5 @@ echo "🔄 Puedes ejecutar ahora: source $SHELL_RC"
 
 echo "✅ fnm instalado y disponible en esta terminal."
 echo "Prueba ahora con: fnm --version"
+
+EOSU
