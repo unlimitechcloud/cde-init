@@ -44,9 +44,8 @@ else
 fi
 
 # 6. Hacer source del archivo RC para que fnm esté disponible ya
-echo "🔄 Ejecutando: source $SHELL_RC"
+echo "🔄 Puedes ejecutar ahora: source $SHELL_RC"
 # shellcheck disable=SC1090
-source "$SHELL_RC"
 
 echo "✅ fnm instalado y disponible en esta terminal."
 echo "Prueba ahora con: fnm --version"
