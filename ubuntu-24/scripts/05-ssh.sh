@@ -1,6 +1,8 @@
 #!/bin/bash
 set -euo pipefail
 
+sudo su - "$OWNER_USER"
+
 SSH_DIR="$HOME/.ssh"
 KEY_FILE="$SSH_DIR/id_rsa"
 
