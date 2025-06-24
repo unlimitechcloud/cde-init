@@ -1,6 +1,15 @@
 #!/bin/bash
 set -euo pipefail
-source ~/.bashrc
+
+# fnm
+FNM_PATH="/home/coder/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "`fnm env`"
+fi
+
+# Inicialización automática de fnm
+eval "$(fnm env)"
 
 for dep in curl jq fnm; do
   if ! command -v "$dep" >/dev/null 2>&1; then
