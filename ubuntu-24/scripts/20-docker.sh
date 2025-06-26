@@ -1,15 +1,7 @@
 #!/bin/bash
 set -euo pipefail
 
-# 1. Detectar usuario interactivo (no root)
-if [ "$EUID" -eq 0 ]; then
-    # SUDO_USER solo existe si ejecutas con sudo, sino será root
-    USER_TO_ADD="${SUDO_USER:-$(logname)}"
-else
-    USER_TO_ADD="$USER"
-fi
-
-echo "Configurando Docker para el usuario: $USER_TO_ADD"
+echo "Configurando Docker para el usuario: $USER"
 
 DOCKER_GPG_DIR="/etc/apt/keyrings"
 DOCKER_GPG_KEY="$DOCKER_GPG_DIR/docker.asc"
@@ -48,17 +40,17 @@ if ! getent group docker >/dev/null; then
 fi
 
 # 7. Añade el usuario correcto al grupo docker
-if id "$USER_TO_ADD" | grep -qw docker; then
-  echo "El usuario $USER_TO_ADD ya está en el grupo docker."
+if id "$USER" | grep -qw docker; then
+  echo "El usuario $USER ya está en el grupo docker."
 else
-  sudo usermod -aG docker "$USER_TO_ADD"
-  echo "Usuario $USER_TO_ADD añadido al grupo docker."
+  sudo usermod -aG docker "$USER"
+  echo "Usuario $USER añadido al grupo docker."
 fi
 
 echo "-------------------------------------------------------------"
 echo "IMPORTANTE:"
 echo "1. Cierra **todas** las sesiones y vuelve a entrar para activar el grupo docker."
 echo "   O ejecuta: 'newgrp docker' para una shell temporal con el grupo activo."
-echo "2. Para verificar, corre: 'id $USER_TO_ADD' y revisa que aparezca 'docker'."
+echo "2. Para verificar, corre: 'id $USER' y revisa que aparezca 'docker'."
 echo "3. Prueba: 'docker ps'"
 echo "-------------------------------------------------------------"
